@@ -4,29 +4,31 @@ import datetime
 
 # Konfigurasi halaman
 st.set_page_config(
-    page_title="2 Tahun Bersama 💖",
-    page_icon="💑",
-    layout="centered",
-    initial_sidebar_state="collapsed",
+    page_title="2 Tahun Cinta Kita 💕",
+    page_icon="💞",
+    layout="wide",
 )
 
-# Gaya CSS gemas
+# CSS untuk nuansa pink dan efek lucu
 st.markdown("""
     <style>
-    .big-title {
-        font-size: 50px;
+    body {
+        background-color: #ffe6f0;
+    }
+    .title {
+        font-size: 60px;
         font-weight: bold;
+        color: #ff3399;
         text-align: center;
-        color: pink;
     }
     .subtitle {
         font-size: 30px;
-        text-align: center;
         color: #ff66b2;
+        text-align: center;
     }
     .heart {
-        text-align: center;
         font-size: 80px;
+        text-align: center;
         animation: pulse 1s infinite;
     }
     @keyframes pulse {
@@ -37,41 +39,63 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Tampilan judul dan emoji
-st.markdown('<div class="big-title">Happy 2nd Anniversary! 🎉</div>', unsafe_allow_html=True)
-st.markdown('<div class="heart">❤️</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">2 Tahun Bersama Kamu 💞</div>', unsafe_allow_html=True)
+# Judul besar dan animasi hati
+st.markdown('<div class="title">Selamat 2 Tahun, Sayang! 💖</div>', unsafe_allow_html=True)
+st.markdown('<div class="heart">💕</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">Perjalanan cinta kita yang penuh warna 🌸</div>', unsafe_allow_html=True)
 
-# Tambahkan foto berdua jika ada
-uploaded_file = st.file_uploader("Upload foto kenangan kalian 📸", type=["jpg", "jpeg", "png"])
-if uploaded_file:
-    image = Image.open(uploaded_file)
-    st.image(image, caption="Kenangan manis kita 💖", use_column_width=True)
-
-# Pesan manis
-st.markdown("## Surat Cinta Untukmu 💌")
-message = """
-Sayangku,
-
-Hari ini tepat 2 tahun kita bersama. Setiap momen bersamamu begitu berarti dan penuh warna. 
-Terima kasih sudah selalu ada, tertawa bersamaku, dan mencintaiku apa adanya.
-
-Aku bersyukur banget bisa melewati semua ini dengan kamu 💕
-Semoga kita bisa terus berjalan berdua, menua bersama 🥰
-
-Love you always 💘
-"""
-st.write(message)
-
-# Hitung waktu bersama
-anniversary_date = datetime.date(2023, 5, 18)  # ganti sesuai tanggal jadian kalian
+# Hitung hari jadian
+anniversary_date = datetime.date(2023, 5, 18)
 today = datetime.date.today()
 days_together = (today - anniversary_date).days
+st.markdown(f"### Kita sudah bersama selama **{days_together} hari** 🌟")
 
-st.markdown(f"### Kita sudah bersama selama **{days_together} hari** 🌈")
+# Surat cinta
+st.markdown("## 💌 Surat Untuk Kamu")
+st.success("""
+Sayangku,
 
-# Tombol kejutan
-if st.button("Klik untuk peluk virtual 🤗"):
+Dua tahun yang penuh cinta, tawa, dan pelukan hangat. 
+Setiap hari bersamamu seperti mimpi indah yang terus berulang.
+
+Terima kasih sudah menjadi rumah dan pelangi di setiap hariku 🌈
+
+Dengan cinta yang tak pernah pudar,
+**Aku ❤️ Kamu!**
+""")
+
+# Galeri Foto
+st.markdown("## 📸 Galeri Kenangan Kita")
+
+cols = st.columns(3)
+with cols[0]:
+    f1 = st.file_uploader("Foto 1", type=["jpg", "png", "jpeg"], key="foto1")
+    if f1: st.image(Image.open(f1), use_column_width=True)
+with cols[1]:
+    f2 = st.file_uploader("Foto 2", type=["jpg", "png", "jpeg"], key="foto2")
+    if f2: st.image(Image.open(f2), use_column_width=True)
+with cols[2]:
+    f3 = st.file_uploader("Foto 3", type=["jpg", "png", "jpeg"], key="foto3")
+    if f3: st.image(Image.open(f3), use_column_width=True)
+
+cols2 = st.columns(3)
+with cols2[0]:
+    f4 = st.file_uploader("Foto 4", type=["jpg", "png", "jpeg"], key="foto4")
+    if f4: st.image(Image.open(f4), use_column_width=True)
+with cols2[1]:
+    f5 = st.file_uploader("Foto 5", type=["jpg", "png", "jpeg"], key="foto5")
+    if f5: st.image(Image.open(f5), use_column_width=True)
+with cols2[2]:
+    f6 = st.file_uploader("Foto 6", type=["jpg", "png", "jpeg"], key="foto6")
+    if f6: st.image(Image.open(f6), use_column_width=True)
+
+# Kejutan balon
+if st.button("Klik untuk kejutan spesial 🎁"):
     st.balloons()
-    st.success("Peluk dari jauh! 💞")
+    st.snow()
+    st.success("Surprise peluk cium dari jauh 💞")
+
+# Penutup manis
+st.markdown("### 🌷 Terima kasih sudah jadi bagian terindah dalam hidupku.")
+st.markdown("##### — Dibuat dengan cinta 💘 pakai Python + Streamlit —")
 
